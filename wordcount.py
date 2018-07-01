@@ -1,7 +1,9 @@
 # put your code here.
-"""
+
 from sys import argv
-print(argv)"""
+
+
+print(argv)
 def word_count(filename):
 	text = open(filename)
 
@@ -18,4 +20,5 @@ def word_count(filename):
 
 	text.close()
 
-word_count("test.txt")
+for index, value in enumerate(argv[1:]):
+	word_count(argv[index])
