@@ -1,24 +1,19 @@
-# put your code here.
+# count words in poem
+import re
 
-from sys import argv
 
-
-print(argv)
 def word_count(filename):
-	text = open(filename)
+	word_dict = {}
 
-	word_count_dict = {}
+	text = open(filename, "r")
 	for line in text:
 		line = line.rstrip()
+		line = re.sub(r'[^\w\s]','',line)
 		line = line.split(" ")
 		for word in line:
-			#print(line)
-			word_count_dict[word] = word_count_dict.get(word,0) + 1
+			word_dict[word] =	word_dict.get(word, 0) +1
+	for key, value in word_dict.items():
+		print (key, value)	
+	return word_dict
 
-	for key, value in word_count_dict.items():
-		print("{} {}".format(key,value))
-
-	text.close()
-
-for index, value in enumerate(argv[1:]):
-	word_count(argv[index])
+word_count("test.txt")
